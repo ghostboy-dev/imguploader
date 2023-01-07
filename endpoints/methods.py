@@ -7,6 +7,7 @@ from threading import Thread
 import requests
 import datetime
 import random
+import secrets
 import string
 
 
@@ -177,7 +178,8 @@ def filecleaner():
             pass
         
 def passwordmaker(size):
-    getpasswd =  ''.join(random.choice(string.ascii_uppercase + string.digits + string.ascii_lowercase) for x in range(size))
+    characters = string.ascii_uppercase + string.digits + string.ascii_lowercase + '!#$%&*+-/:;<=>?@[]^_{|}~'
+    getpasswd =  ''.join(secrets.choice(characters) for x in range(size))
     return getpasswd
 
 def dellog(webhookurl, filename, filestats):
